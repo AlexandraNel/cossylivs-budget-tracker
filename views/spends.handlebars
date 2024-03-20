@@ -1,0 +1,93 @@
+{{!-- redirect if no data --}}
+
+{{#unless userSpends.length}}
+  {{> no-data }}
+{{/unless}}
+
+{{#each userSpends}}
+  <!-- Display spends data -->
+{{/each}}
+
+
+
+{{#each spends}}
+<div>
+<p>{{name}}</p>
+<p>{{amount}}</p>
+<p>{{categories.name}}</p>
+<p>{{weeks.name}}</p>
+</div>
+{{/each}}
+
+<body>
+    <h1>Create Spends</h1>
+    <form class="new-spend-form">
+        <div class="form-group">
+            <label for="name-new-spend">Spend Name:</label>
+            <input type="text" id="name-new-spend" required>
+        </div>
+        <div class="form-group">
+            <label for="amount-new-spend">Amount:</label>
+            <input type="text" id="amount-new-spend" required>
+        </div>
+        <div class="form-group">
+            <label for="category-id-new-spend">Category:</label>
+            <input type="text" id="category-id-new-spend" required>
+        </div>
+        <div class="form-group">
+            <label for="weeks-id-new-spend">Week:</label>
+            <input type="text" id="weeks-id-new-spend" required>
+        </div>
+        <button type="submit" class="Button">Save</button>
+    </form>
+
+    <h1>Expense List</h1>
+    <div class="spends-list">
+        <!-- Categories will be rendered here -->
+    </div>
+
+    <script src="spends.js"></script>
+</body>
+
+</html>
+
+<!-- editSpends.js -->
+
+<main class="container mt-5">
+  <h1 class="mb-4">Edit</h1>
+  <form class="update-spend-form" class="mb-3">
+    <div class="mb-3">
+      <label for="title-update-spend" class="form-label">Title</label>
+      <input type="text" class="form-control" id="title-update-spend" placeholder="Enter spend title"
+        value="{{title}}" />
+    </div>
+    <div class="mb-3">
+      <label for="amount-update-spend" class="form-label">Amount</label>
+      <input type="text" class="form-control" id="amount-update-spend" placeholder="Enter spend amount"
+        value="{{amount}}" />
+    </div>
+    <div class="mb-3">
+      <input type="text" class="form-control" id="spend-category" value="{{categories_id}}" disabled>
+      <label for="spend-category" class="form-label">Category</label>
+    </div>
+    <div class="mb-3">
+      <input type="text" class="form-control" id="spend-week" value="{{weeks_id}}" disabled>
+      <label for="spend-week" class="form-label">Week</label>
+    </div>
+    <button type="submit" id="update-spend" class="btn btn-primary">Save</button>
+    <button type="button" id="delete-spend" class="btn btn-danger">Delete</button>
+  </form>
+</main>
+
+<!-- also handles deletion -->
+
+<!-- Display spends -->
+{{#each allSpends}}
+<div>
+    <p>Title: {{title}}</p>
+    <p>Amount: {{amount}}</p>
+    <p>Category: {{category.name}}</p>
+    <p>Week: {{week.name}}</p>
+    <!-- Add edit and delete buttons here -->
+</div>
+{{/each}}
